@@ -1,0 +1,31 @@
+name: Sync GitHub Stars to Raindrop.io
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: sync-stars
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+      - run: npm start
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          RAINDROP_TOKEN: ${{ secrets.RAINDROP_TOKEN }}
+          RAINDROP_COLLECTION_ID: ${{ secrets.RAINDROP_COLLECTION_ID }}
