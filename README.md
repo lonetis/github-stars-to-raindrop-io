@@ -31,5 +31,4 @@ npm run dev
 ## Tags
 
 Each bookmark is tagged with:
-- `github-star`
-- Up to 5 repository topics
+- `ghstars`
