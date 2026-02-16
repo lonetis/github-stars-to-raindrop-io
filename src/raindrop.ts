@@ -136,12 +136,8 @@ export async function deleteRaindrops(
   log.groupEnd();
 }
 
-function buildTags(star: Star): string[] {
-  const tags = ["github-star"];
-  for (const topic of star.topics.slice(0, 5)) {
-    tags.push(topic);
-  }
-  return tags;
+function buildTags(_star: Star): string[] {
+  return ["ghstars"];
 }
 
 function chunk<T>(arr: T[], size: number): T[][] {
