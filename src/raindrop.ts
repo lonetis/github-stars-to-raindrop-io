@@ -93,7 +93,6 @@ export async function createRaindrops(
       excerpt: star.description,
       created: star.starredAt,
       collection: { $id: collectionId },
-      tags: buildTags(star),
     }));
 
     const res = await raindropFetch("/raindrops", token, {
@@ -134,10 +133,6 @@ export async function deleteRaindrops(
   }
 
   log.groupEnd();
-}
-
-function buildTags(_star: Star): string[] {
-  return ["ghstars"];
 }
 
 function chunk<T>(arr: T[], size: number): T[][] {

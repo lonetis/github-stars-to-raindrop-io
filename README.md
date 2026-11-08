@@ -30,5 +30,4 @@ npm run dev
 
 ## Tags
 
-Each bookmark is tagged with:
-- `ghstars`
+Bookmarks are created without tags. The dedicated collection is what identifies them as GitHub stars.
